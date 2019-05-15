@@ -82,7 +82,7 @@ export class UsuarioService {
     let url = URL_SERVICIOS + '/usuario';
 
     return this.http.post(url, usuario)
-      .map((res: any) => {
+      .map((resp: any) => {
 
         const Toast = Swal.mixin({
           toast: true,
@@ -95,7 +95,32 @@ export class UsuarioService {
           type: 'success',
           title: 'Usuario ' + usuario.email + ' creado exitosamente'
         });
-        return res.usuario;
+        return resp.usuario;
+      });
+  }
+
+
+  actualizarUsuario(usuario: Usuario) {
+    let url = URL_SERVICIOS + '/usuario/' + usuario._id;
+    url += '?token=' + this.token;
+
+    return this.http.put(url, usuario)
+      .map((resp: any) => {
+
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'bottom-start',
+          showConfirmButton: false,
+          timer: 3000
+        });
+
+        Toast.fire({
+          type: 'success',
+          title: 'Usuario actualizado exitosamente'
+        });
+        this.guardarStorage(resp.usuario._id, this.token, resp.usuario);
+        return true;
+
       });
   }
 }

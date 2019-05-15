@@ -18,6 +18,8 @@ import { IncrementadorComponent } from '../components/incrementador/incrementado
 import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
+import { PipesModule } from '../pipes/pipes.module';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -30,7 +32,8 @@ import { PromesasComponent } from './promesas/promesas.component';
         IncrementadorComponent,
         GraficoDonaComponent,
         AccountSettingsComponent,
-        PromesasComponent
+        PromesasComponent,
+        ProfileComponent
     ],
     exports: [
         PagesComponent,
@@ -42,7 +45,8 @@ import { PromesasComponent } from './promesas/promesas.component';
         SharedModule,
         PAGES_ROUTES,
         FormsModule,
-        ChartsModule
+        ChartsModule,
+        PipesModule
     ]
 })
 export class PagesModule { }

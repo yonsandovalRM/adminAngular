@@ -1,0 +1,38 @@
+<div class="row animated slideInUp">
+    <div class="col-md-7">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">Perfil del usuario</div>
+                <div class="card-subtitle">Datos personales del usuario</div>
+                <form ngNativeValidate #f="ngForm" (ngSubmit)="guardar(f.value)" class="form">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input [ngModel]="usuario.name" name="name" type="text" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-email"></i></div>
+                            <input [ngModel]="usuario.email" [disabled]="usuario.google" name="email" type="email" class="form-control" placeholder="correo electrónico" required>
+                        </div>
+                    </div>
+                    <button class="btn btn-success waves-effect waves-light"><i class="fa fa-save"></i> Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">Fotografía del usuario</div>
+                <div class="card-subtitle">Fotografía del usuario</div>
+                <img src="" alt="">
+                <input type="file" class="form-control mb-4">
+                <button class="btn btn-success waves-effect waves-light"><i class="fa fa-save"></i> Actualizar foto</button>
+            </div>
+        </div>
+    </div>
+</div>
