@@ -1,5 +1,5 @@
 <div class="row animated slideInUp">
-    <div class="col-md-7">
+    <div class="col-md-8">
         <div class="card">
             <div class="card-body">
                 <div class="card-title">Perfil del usuario</div>
@@ -24,14 +24,15 @@
             </div>
         </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-4">
         <div class="card">
             <div class="card-body">
                 <div class="card-title">Fotografía del usuario</div>
                 <div class="card-subtitle">Fotografía del usuario</div>
-                <img src="" alt="">
-                <input type="file" class="form-control mb-4">
-                <button class="btn btn-success waves-effect waves-light"><i class="fa fa-save"></i> Actualizar foto</button>
+                <img *ngIf="!imagenTemporal" [src]="usuario.img | imagen" alt="" class="img-fluid mb-4">
+                <img *ngIf="imagenTemporal" [src]="imagenTemporal" alt="" class="img-fluid mb-4">
+                <input type="file" (change)="seleccionImagen($event.target.files[0])" class="form-control mb-4">
+                <button (click)="cambiarImagen()" [disabled]="!imagenSubir" class="btn btn-success waves-effect waves-light"><i class="fa fa-save"></i> Actualizar foto</button>
             </div>
         </div>
     </div>

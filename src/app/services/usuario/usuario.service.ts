@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 
 import '../rxjs-operators';
 import { Router } from '@angular/router';
+import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class UsuarioService {
 
   constructor(
     public router: Router,
-    public http: HttpClient
+    public http: HttpClient,
+    public _subirArchivoService: SubirArchivoService
   ) {
     this.cargarStorage();
   }
@@ -122,5 +124,29 @@ export class UsuarioService {
         return true;
 
       });
+  }
+
+  cambiarImagen(archivo: File, id: string) {
+    this._subirArchivoService.subirArchivo(archivo, 'usuarios', id).then((resp: any) => {
+
+
+      this.usuario.img = resp.usuarioActualizado.img;
+
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'bottom-start',
+        showConfirmButton: false,
+        timer: 3000
+      });
+      Toast.fire({
+        type: 'success',
+        title: 'Imagen de usuario actualizada exitosamente'
+      });
+
+
+      this.guardarStorage(id, this.token, this.usuario);
+    }).catch(resp => {
+      console.log(resp);
+    });
   }
 }

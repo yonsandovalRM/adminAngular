@@ -20,6 +20,7 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { PromesasComponent } from './promesas/promesas.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { ProfileComponent } from './profile/profile.component';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -46,7 +47,8 @@ import { ProfileComponent } from './profile/profile.component';
         PAGES_ROUTES,
         FormsModule,
         ChartsModule,
-        PipesModule
+        PipesModule,
+        CommonModule
     ]
 })
 export class PagesModule { }
